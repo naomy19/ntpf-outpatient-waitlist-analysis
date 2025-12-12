@@ -1,124 +1,103 @@
-Welcome to the sample GitHub ReadME! Use this template as an outline for your data analytics projects. Include one ReadME per repository, with each repository storing one project. Remember, it's better to have quality over quantity - having 2 stellar business-relevant projects stands out much more than 3+ mediocre projects. Feel free to make a copy of this or fork this repository and make it your own. Happy portfolio-ing :) 
-
-
-
-
 # Project Background
-Backround about the company, including the industry, active years, business model, and key business metrics. Explain this from the POV of a data analyst who is working at the company.
 
-Insights and recommendations are provided on the following key areas:
+This is a data analytics project analysing outpatient waiting list trends in Ireland using official National Treatment Purchase Fund (NTPF) open data.
+The NTPF is an Irish state agency that publishes regular statistics on hospital waiting lists across public hospitals. These datasets are used by healthcare planners, hospital managers, and policymakers to monitor access to care and identify pressure points in the health system.
 
-- **Category 1:** 
-- **Category 2:** 
-- **Category 3:** 
-- **Category 4:** 
+From the perspective of a data analyst working in a healthcare analytics or operations team, this project focuses on understanding **outpatient waiting list pressures across medical specialties** between 2022 and 2025. Key business metrics include:
 
-The SQL queries used to inspect and clean the data for this analysis can be found here [link].
+- Total number of patients waiting for outpatient treatment  
+- Distribution of waiting times (0–6, 6–12, 12–18, 18+ months)  
+- Long-wait exposure (patients waiting over 12 months)  
+- Differences in demand across specialties and over time  
 
-Targed SQL queries regarding various business questions can be found here [link].
+Insights and recommendations are provided across the following key areas:
 
-An interactive Tableau dashboard used to report and explore sales trends can be found here [link].
+- Waiting list trends over time  
+- Specialties contributing most to outpatient demand  
+- Long-wait risk across specialties  
+- Changes in long-wait patterns over multiple years  
 
 
 
 # Data Structure & Initial Checks
 
-The companies main database structure as seen below consists of four tables: table1, table2, table3, table4, with a total row count of X records. A description of each table is as follows:
-- **Table 2:**
-- **Table 3:**
-- **Table 4:**
-- **Table 5:**
+For this project, the specialty-level table was used to provide richer analytical insights.
+Each row represents a **monthly snapshot of waiting list counts per specialty**.
 
-[Entity Relationship Diagram here]
+Additional derived fields were created during data preparation:
 
+- **Long_Waiters** = (12–18 months) + (18+ months)  
+- **Long_Wait_Ratio** = Long_Waiters / Total  
+
+**Row count:** ~1,000 records  
+**Time period:** January 2022 – October 2025  
+**Granularity:** Monthly summaries by specialty  
 
 
 # Executive Summary
 
 ### Overview of Findings
 
-Explain the overarching findings, trends, and themes in 2-3 sentences here. This section should address the question: "If a stakeholder were to take away 3 main insights from your project, what are the most important things they should know?" You can put yourself in the shoes of a specific stakeholder - for example, a marketing manager or finance director - to think creatively about this section.
+Between 2022 and 2025, Ireland’s outpatient waiting list showed a **gradual overall decline**, though recent months indicate renewed pressure. While total waiting numbers decreased from approximately **6.8M in 2022 to 6.4M in 2024**, the waiting list reached **5.6M by October 2025**, which is higher than the same point in the previous two years.
 
-[Visualization, including a graph of overall trends or snapshot of a dashboard]
+Demand is **unevenly distributed across specialties**, with a small number consistently accounting for a large share of patients waiting. Long-wait risk also varies substantially by specialty, highlighting areas where access challenges may be worsening over time.
 
+<img src=https://github.com/naomy19/ntpf-outpatient-waitlist-analysis/blob/main/images/Dashboard.png>
 
 
 # Insights Deep Dive
-### Category 1:
+### 1. Overall Waiting List Trends
 
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+- Total outpatient waiting numbers decreased gradually from 2022 to 2024.
+- By October 2025, the waiting list stood at approximately **5.6M**, exceeding the same period in both 2023 and 2024.
+- This suggests that while long-term progress has been made, recent demand pressures may be emerging.
+
+<img src=https://github.com/naomy19/ntpf-outpatient-waitlist-analysis/blob/main/images/Total%20wait%20by%20year.png>
+
+
+### 2. Specialties with the Highest Waiting Lists
+
+- **Orthopaedics**, **Dermatology**, and **Otolaryngology** consistently recorded the highest outpatient waiting volumes.
+- These specialties accounted for a disproportionate share of total outpatient demand across all years analysed.
+- Trends indicate persistent structural pressure rather than short-term fluctuations.
   
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-
-[Visualization specific to category 1]
+<img src=https://github.com/naomy19/ntpf-outpatient-waitlist-analysis/blob/main/images/Total%20wait%20by%20specialty.png>
 
 
-### Category 2:
+### 3. Long-Wait Risk by Specialty
 
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+- Long-wait ratios varied significantly between specialties.
+- **Clinical Genetics** showed a steady increase in long-wait ratio over time, reaching the highest level among specialties in 2024.
+- Other specialties exhibited more stable or fluctuating long-wait patterns, suggesting differing capacity constraints.
 
-[Visualization specific to category 2]
-
-
-### Category 3:
-
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-
-[Visualization specific to category 3]
-
-
-### Category 4:
-
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-
-[Visualization specific to category 4]
-
+<img src=https://github.com/naomy19/ntpf-outpatient-waitlist-analysis/blob/main/images/Long%20wait%20ratio%20by%20specialty.png>
 
 
 # Recommendations:
 
-Based on the insights and findings above, we would recommend the [stakeholder team] to consider the following: 
+Based on the findings above, the following recommendations are proposed for healthcare planning and operational teams:
 
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
-  
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
-  
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
-  
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
-  
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
+1. **Prioritise capacity planning in high-volume specialties**  
+   Orthopaedics, Dermatology, and Otolaryngology consistently dominate outpatient waiting volumes and should remain priority areas for resourcing and process optimisation.
+
+2. **Monitor specialties with rising long-wait ratios**  
+   The steady increase in long-wait exposure in Clinical Genetics suggests growing access constraints that may require targeted intervention.
+
+3. **Track recent upward trends in 2025 closely**  
+   Although overall waiting numbers declined over previous years, the higher levels observed in 2025 compared to recent years may signal renewed system pressure.
   
 
 
 # Assumptions and Caveats:
 
-Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
+- The analysis is based on **summary-level monthly data**, not individual patient records.
+- Waiting list counts reflect reported snapshots and may be affected by reporting or classification changes over time.
+- No adjustment was made for population growth or demographic change.
+- The analysis focuses on national-level trends and does not account for hospital-specific operational constraints.
 
-* Assumption 1 (ex: missing country records were for customers based in the US, and were re-coded to be US citizens)
-  
-* Assumption 1 (ex: data for December 2021 was missing - this was imputed using a combination of historical trends and December 2020 data)
-  
-* Assumption 1 (ex: because 3% of the refund date column contained non-sensical dates, these were excluded from the analysis)
+
+
+## Data Source
+
+National Treatment Purchase Fund (NTPF) – Outpatient Waiting List Open Data  
+https://www.ntpf.ie/waiting-list-data/open-data/
